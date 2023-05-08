@@ -1,0 +1,14 @@
+.signup-container {
+  background-color: rgb(70, 70, 70);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  height: 100vh;
+  min-height: 400px;
+}
