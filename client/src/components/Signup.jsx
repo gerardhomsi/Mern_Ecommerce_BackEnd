@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
 import equals from 'validator/lib/equals';
-import { showErrorMsg } from '../helpers/message'
+import { showErrorMsg, showSuccessMsg } from '../helpers/message';
+import { showLoading } from "../helpers/loading";
 import { Link } from "react-router-dom";
 import "./signup.css";
 
@@ -69,33 +70,36 @@ const Signup = () => {
   ];
 
   // EVENT HANDLERS //
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name] : e.target.value,
-    })
-  };
+    const handleChange = (e) => {
+      setFormData({
+        ...formData,
+        [e.target.name] : e.target.value,
+        successMsg: '',
+        errorMsg: '',
+      })
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // CLIENT SIDE VALIDATION
+    const handleSubmit = (e) => {
+      e.preventDefault();
+
+
+  // CLIENT SIDE VALIDATION
     if (isEmpty(username) || isEmpty(email) || isEmpty(password) || isEmpty(password2)) {
       setFormData({
-        ...formData, errorMsg: "All fields are required"
+        ...formData, errorMsg: "All fields are required",
       })
     } else if (!isEmail(email)) {
       setFormData({
-        ...formData, errorMsg: "Invalid Email"
+        ...formData, errorMsg: "Invalid Email",
       })
     } else if (!equals(password, password2)) {
       setFormData({
-        ...formData, errorMsg: "Passwords DO NOT match"
+        ...formData, errorMsg: "Passwords DO NOT match",
       })
     } else {
-      //SUCCESS
-
+      const {username, email, password } = formData;
+      const data = {username, email, password }
     }
-    console.log(formData)
   };
 
   const showSignupForm = () => (
@@ -113,7 +117,7 @@ const Signup = () => {
       ))}
 
       <div className="form-group  d-flex flex-column align-items-center">
-        <button type="submit" className="btn btn-primary btn-block mt-1">
+        <button type="submit" className="btn btn-primary btn-block mt-1" style={{ width: "100%" }}>
           Signup
         </button>
       <p className="text-center text-white mt-2">
@@ -127,7 +131,9 @@ const Signup = () => {
     <div className="signup-container">
       <div className="row g-0 vh-100 px-3">
         <div className="col-md-5 mx-auto align-self-center">
+          {successMsg && showSuccessMsg(successMsg)}
           {errorMsg && showErrorMsg(errorMsg)}
+          {loading && showLoading()}
           {showSignupForm()}
           {/* {JSON.stringify(formData)} */}
         </div>
