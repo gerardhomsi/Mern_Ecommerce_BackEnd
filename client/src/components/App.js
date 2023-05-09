@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Home, Signin, NotFound, Signup } from "./components";
+import './app.css'
 
 const App = () => (
   <BrowserRouter>
