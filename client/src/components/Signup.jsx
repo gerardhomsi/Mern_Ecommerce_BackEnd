@@ -66,7 +66,7 @@ const Signup = () => {
     },
   ];
 
-  // EVENT HANDLERS //
+  // EVENT HANDLERSSS //
   const handleChange = (e) => {
     setFormData({
       ...formData,
