@@ -4,9 +4,8 @@ import isEmpty from "validator/lib/isEmpty";
 import equals from "validator/lib/equals";
 import { showErrorMsg, showSuccessMsg } from "../helpers/message";
 import { showLoading } from "../helpers/loading";
-import { signup } from "../API/auth";
+import { signup } from "../api/auth";
 import { Link } from "react-router-dom";
-import "./signup.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -128,6 +127,7 @@ const Signup = () => {
           setFormData({
             ...formData,
             loading: false,
+            errorMsg: err.response.data.errorMessage,
           });
         });
     }
