@@ -5,20 +5,31 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
     "start-server": "nodemon server.js",
     "start-client": "npm start --prefix client",
-    "dev": "concurrently \"npm run start-server\" \"npm run start-client\""
+    "start": "npm run start-server",
+    "client": "npm run start-client"
   },
   "author": "Gerard Homsi",
   "license": "MIT",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.5",
-    "nodemon": "^2.0.22"
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.22",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
+    "stripe": "^12.9.0"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
